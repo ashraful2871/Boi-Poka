@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
 const Book = ({ book }) => {
-  const { bookName, author, image, review, totalPages } = book;
+  const { bookName, author, image, tags, rating, category } = book;
   return (
-    <div className="card bg-base-100 w-96 shadow-xl border-2 p-6">
-      <figure className=" border-2 py-8 px-24 bg-[#F3F3F3]">
+    <div className="card bg-base-100 w-96 shadow-xl border-2 p-6 rounded-2xl mt-6">
+      <figure className=" border-2 py-8 px-24 bg-[#F3F3F3] rounded-2xl">
         <img
           className="w-32 h-40 mx-auto object-cover"
           src={image}
@@ -10,14 +11,20 @@ const Book = ({ book }) => {
         />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">
-          {bookName}
-          <div className="badge badge-secondary">NEW</div>
-        </h2>
-        <p>{author}</p>
-        <div className="card-actions justify-end">
-          <div className="badge badge-outline">Fashion</div>
-          <div className="badge badge-outline">Products</div>
+        <div className="flex gap-3">
+          {tags.map((tag, idx) => (
+            <div key={idx} className="badge bg-[#F4FCF3] text-[#23BE0A] p-3">
+              {tag}
+            </div>
+          ))}
+        </div>
+
+        <h2 className="card-title">{bookName}</h2>
+        <p>By: {author}</p>
+        <div className="divider border-t border-dashed"></div>
+        <div className="card-actions justify-between ">
+          <div className=" ">{category}</div>
+          <div className="">{rating}</div>
         </div>
       </div>
     </div>
